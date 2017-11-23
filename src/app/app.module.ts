@@ -15,6 +15,7 @@ import {ModalComponent} from './components/modal/modal.component';
 import {SpotifyService} from './services/spotify.service';
 import {AuthGuard} from '../app/components/Auth/auth.guard';
 import {AuthService} from '../app/components/Auth/auth.service';
+import {ArtistComponent} from '../app/components/artist/artist.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {AuthService} from '../app/components/Auth/auth.service';
     AboutComponent,
     SearchComponent,
     LoginComponent,
-    ModalComponent
+    ModalComponent,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,
