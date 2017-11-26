@@ -23,7 +23,6 @@ export class AuthService{
         {
             localStorage.setItem('access_token', access_token);
             localStorage.setItem('refresh_token', refresh_token);
-            localStorage.setItem('loggedIn', 'true');            
             this.loggedIn.next(true);
             console.log(this.loggedIn);
             this.router.navigate(['/search']);
@@ -32,12 +31,19 @@ export class AuthService{
             this.router.navigate(['/']);
     }
 
+    getAccessToken(refresh_token){
+        return this.http.get('http://localhost:3000/refresh_token?refresh_token='+ refresh_token)
+                       .map(res => res.json()); 
+
+    }
+
     logout(){
         localStorage.removeItem('access_token');
         this.loggedIn.next(false);
         localStorage.removeItem('loggedIn');
         console.log(this.loggedIn);
         localStorage.removeItem('refresh_token');
+        localStorage.removeItem('current_time');
        /*this.http.get('http://localhost:3000/logout').
         toPromise().then(res => {
             console.log(res.json());
@@ -50,10 +56,8 @@ export class AuthService{
         if(localStorage.getItem('access_token'))
             return true;
         else{
-           // this.loggedIn.next(true);
             return false;
         }
-        //return !!localStorage.getItem('access_token');
     }
 
 }
