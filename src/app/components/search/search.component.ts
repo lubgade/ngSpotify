@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit{
   refresh_token: string;
   isLoggedIn$: Observable<boolean>;
   searchRes: Artist[];
+  
 
   constructor(private spotifyService: SpotifyService, 
               private router: Router, 
@@ -32,9 +33,31 @@ export class SearchComponent implements OnInit{
   searchMusic(){
     this.access_token = localStorage.getItem('access_token');
     this.spotifyService.searchMusic(this.searchstr, 'artist', this.access_token).
-    subscribe(res =>{
-        this.searchRes = res.artists.items;
-    });
+    subscribe(suc =>{
+      console.log(suc);
+        this.searchRes = suc.artists.items;
+    },
+  err => {
+    console.log(err);
+    console.log(err._body);
+    let body = err.json().error;
+    console.log(body.message);
+    if(body.message == 'The access token expired'){
+      this.refresh_token = localStorage.getItem('refresh_token');
+      this.authService.getAccessToken(this.refresh_token)
+                      .subscribe(suc => {
+                        console.log(suc);
+                        console.log(localStorage.getItem('access_token'));
+                        this.access_token = suc.access_token;
+                        localStorage.setItem("access_token", suc.access_token);
+                        this.spotifyService.searchMusic(this.searchstr, 'artist', this.access_token);
+                      });
+    }
+    else{
+      this.router.navigate(['/login']);
+    }
+                    
+  });
   }
 
 }
