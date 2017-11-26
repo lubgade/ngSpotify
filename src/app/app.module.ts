@@ -16,7 +16,7 @@ import {SpotifyService} from './services/spotify.service';
 import {AuthGuard} from '../app/components/Auth/auth.guard';
 import {AuthService} from '../app/components/Auth/auth.service';
 import {ArtistComponent} from '../app/components/artist/artist.component';
-
+import {AlbumComponent} from '../app/components/album/album.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import {ArtistComponent} from '../app/components/artist/artist.component';
     SearchComponent,
     LoginComponent,
     ModalComponent,
-    ArtistComponent
+    ArtistComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,
