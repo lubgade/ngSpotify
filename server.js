@@ -110,7 +110,7 @@ app.get('/callback', function(req, res) {
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
   //var redirect_uri = 'http://localhost:3000';
-
+  console.log('In callback');
   if (state === null || state !== storedState) {
     res.redirect('/#' +
       querystring.stringify({
