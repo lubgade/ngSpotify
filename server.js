@@ -79,7 +79,6 @@ const forceSSL = function() {
 app.use(forceSSL());
 
 
-//app.use(express.static(__dirname + 'public'))
 
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(cookieParser());
@@ -111,6 +110,7 @@ app.get('/callback', function(req, res) {
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
   //var redirect_uri = 'http://localhost:3000';
+  var redirect_uri = '/loginAngular';
 
   if (state === null || state !== storedState) {
     res.redirect('/#' +
