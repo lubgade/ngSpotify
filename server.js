@@ -90,7 +90,6 @@ app.get('/login', function(req, res) {
 
   // your application requests authorization
   var scope = 'user-read-private user-read-email';
-  var redirect_uri = '/callback';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -111,7 +110,6 @@ app.get('/callback', function(req, res) {
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
   //var redirect_uri = 'http://localhost:3000';
-  var redirect_uri = '/loginAngular';
 
   if (state === null || state !== storedState) {
     res.redirect('/#' +
