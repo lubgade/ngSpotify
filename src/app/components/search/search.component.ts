@@ -13,7 +13,7 @@ import {Artist} from '../../../Artist';
 })
 
 export class SearchComponent implements OnInit{
-  private searchstr: string;
+  searchstr: string;
   access_token: string;
   refresh_token: string;
   isLoggedIn$: Observable<boolean>;
