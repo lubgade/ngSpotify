@@ -11,7 +11,7 @@ const path = require('path');
 var client_id = 'b0a17de4c18e4565859e3ee9fee63baf';
 var client_secret = '6b2bd269568347e0b4e62b211b158ac7';
 //var redirect_uri = 'http://localhost:3000/callback';
-var redirect_uri = '/callback';
+var redirect_uri = 'https://thawing-springs-27234.herokuapp.com/callback';
 var show_dialog = true;
 
 const port = process.env.PORT || 8080;
