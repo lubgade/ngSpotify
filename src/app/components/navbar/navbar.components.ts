@@ -11,13 +11,14 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit{
   isLoggedIn$:Observable<boolean>;
+  isCollapsed: boolean;
 
   constructor(private authService: AuthService, private router: Router){
 }
 
   ngOnInit(){
     this.isLoggedIn$ = this.authService.isLoggedIn;
-
+    this.isCollapsed = false;
     console.log(this.isLoggedIn$);
   }
 

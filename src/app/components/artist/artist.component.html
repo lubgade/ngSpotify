@@ -12,7 +12,7 @@
         <div class="row">
             <div *ngIf="albums" >
                 <div *ngFor="let album of albums">
-                    <div class="col-md-4">
+                    <div class="col-sm-4 col-md-4">
                         <div class="well album">
                             <div *ngIf="album.images.length > 0">
                                 <img class="album-thumb img-thumbnail" src="{{album.images[0].url}}" alt="">

@@ -15,7 +15,7 @@ const routes: Routes = [
         component: AboutComponent
     },*/
     {
-        path: 'login',
+        path: 'loginAngular',
         component: LoginComponent,
     },
     {

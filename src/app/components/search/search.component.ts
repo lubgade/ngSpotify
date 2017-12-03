@@ -13,7 +13,7 @@ import {Artist} from '../../../Artist';
 })
 
 export class SearchComponent implements OnInit{
-  private searchstr: string;
+  searchstr: string;
   access_token: string;
   refresh_token: string;
   isLoggedIn$: Observable<boolean>;
@@ -54,7 +54,7 @@ export class SearchComponent implements OnInit{
                       });
     }
     else{
-      this.router.navigate(['/login']);
+      this.router.navigate(['/loginAngular']);
     }
                     
   });

@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Component({
   moduleId: module.id,  
-  selector: 'login',
+  selector: 'loginAngular',
   templateUrl: 'login.component.html',
   providers: [SpotifyService]
 })

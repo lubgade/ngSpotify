@@ -8,7 +8,7 @@ import 'rxjs';
 @Injectable()
 export class AuthService{
     private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
-
+    private w;
     get isLoggedIn(){
         console.log(this.loggedIn);
         return this.loggedIn.asObservable();
@@ -28,11 +28,13 @@ export class AuthService{
             this.router.navigate(['/search']);
         }
         else
-            this.router.navigate(['/']);
+            this.router.navigate(['/loginAngular']);
     }
 
     getAccessToken(refresh_token){
-        return this.http.get('http://localhost:3000/refresh_token?refresh_token='+ refresh_token)
+        let endPoint = '/refresh_token?refresh_token=';
+        //let endPoint = 'http://localhost:3000/refresh_token?refresh_token=';
+        return this.http.get(endPoint + refresh_token)
                        .map(res => res.json()); 
 
     }
@@ -44,12 +46,8 @@ export class AuthService{
         console.log(this.loggedIn);
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('current_time');
-       /*this.http.get('http://localhost:3000/logout').
-        toPromise().then(res => {
-            console.log(res.json());
-        });*/
-        window.location.href = 'https://www.spotify.com/us/logout/';
-        this.router.navigate(['/login']);        
+        
+        this.router.navigate(['/loginAngular']).then(res =>{this.w = window.open('https://www.spotify.com/us/logout/', '_blank');});        
     }
 
     private hasToken(): boolean{
